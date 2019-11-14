@@ -29,7 +29,7 @@ router.post('/login', (req, res) => {
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = getJwtToken(user.username)
                 res.status(200).json({
-                    message: `Welcome ${user}`,
+                    message: `Welcome ${user.username}`,
                     token
                 })
             } else {
@@ -47,7 +47,7 @@ function getJwtToken(username) {
         role: 'student'
     }
 
-    const secret = process.env.JWT_SECRET || "Secret here"
+    const secret = process.env.JWT_SECRET || "This is a secret"
 
     const options = {
         expiresIn: '1d'

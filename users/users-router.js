@@ -1,8 +1,9 @@
 const router = require('express').Router()
+const verify = require('../auth/auth-middleware')
 
 const db = require('./users-model');
 
-router.get('/', (req, res) => {
+router.get('/', verify, (req, res) => {
     db.find()
         .then(users => {
             res.status(200).json(users)

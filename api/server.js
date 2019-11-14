@@ -27,10 +27,6 @@ const sessionConfigure = {
     })
 }
 
-server.get('/sess', (req, res) => {
-    res.status(200).json({ session: req.session })
-})
-
 configureMiddleware(server)
 server.use(session(sessionConfigure))
 server.use('/api', apiRouter)
